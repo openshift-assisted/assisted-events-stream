@@ -23,4 +23,4 @@ ENV GOMODCACHE=/tmp/go-mod-cache
 ENV GOLANGCI_LINT_CACHE=/tmp/.golangci-cache
 
 COPY --from=quay.io/openshift/origin-cli:4.10 /usr/bin/oc /usr/bin/kubectl /usr/bin/
-RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/bin v1.64.7
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/bin v1.64.8
