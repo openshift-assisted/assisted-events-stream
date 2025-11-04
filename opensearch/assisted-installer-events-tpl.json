@@ -1,8 +1,16 @@
 {
-  "index_patterns":["assisted-installer-events-*"],
-  "settings": {
-    "number_of_shards": 1,
-    "number_of_replicas": 2
+  "index_patterns":["assisted-installer-events-v1-*"],
+  "settings" : {
+    "index" : {
+      "number_of_shards" : "1",
+      "number_of_replicas" : "1",
+      "mapping" : {
+        "total_fields" : {
+          "limit" : "100000"
+        }
+      },
+      "codec": "best_compression"
+    }
   },
   "mappings": {
     "dynamic_templates":[
@@ -21,8 +29,8 @@
         "dynamic": true,
         "properties": {
           "connectivity_majority_groups": {
-            "dynamic": true,
-            "properties": {}
+            "type": "object",
+            "enabled": false
           },
           "feature_usage": {
             "dynamic": true,
@@ -51,5 +59,9 @@
         "properties": {}
       }
     }
+  },
+  "aliases" : {
+    "assisted-service-events" : { },
+    "read-assisted-service-events" : { }
   }
 }
